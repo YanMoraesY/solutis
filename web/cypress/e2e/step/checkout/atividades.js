@@ -5,6 +5,7 @@ Given("teste", () => {
     cy.log("Validando o acesso à API...");
 });
 
+
 // // When: Realiza a requisição GET
 // When("eu faço uma requisição GET para {string}", (endpoint) => {
 //     cy.request({
