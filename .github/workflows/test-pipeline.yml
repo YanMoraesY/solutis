@@ -1,0 +1,65 @@
+name: Run Cypress and K6 Tests
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  frontend-tests:
+    name: Run Cypress (Frontend)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout código
+        uses: actions/checkout@v4
+
+      - name: Instalar dependências
+        working-directory: web
+        run: npm install
+
+      - name: Rodar testes do Cypress (UI)
+        working-directory: web
+        run: npx cypress run --headless --browser chrome
+
+      - name: Upload de relatórios (opcional)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cypress-web-results
+          path: web/cypress/screenshots
+
+  backend-tests:
+    name: Run Cypress (Backend)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout código
+        uses: actions/checkout@v4
+
+      - name: Instalar dependências
+        working-directory: bakEnd
+        run: npm install
+
+      - name: Rodar testes do Cypress (API)
+        working-directory: bakEnd
+        run: npx cypress run --headless --browser chrome
+
+      - name: Upload de relatórios (opcional)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cypress-backend-results
+          path: bakEnd/cypress/screenshots
+
+  stress-tests:
+    name: Run K6 Tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout código
+        uses: actions/checkout@v4
+
+      - name: Instalar K6
+        run: sudo apt-get update && sudo apt-get install -y k6
+
+      - name: Rodar testes de stress com K6
+        working-directory: k6
+        run: k6 run stress-test.js
