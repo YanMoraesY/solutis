@@ -39,7 +39,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: ~/.cache/Cypress
-          key: cypress-cache-${{ runner.os }}-${{ hashFiles('bakEnd/package-lock.json') }}
+          key: cypress-cache-${{ runner.os }}-${{ hashFiles('backend/package-lock.json') }}
           restore-keys: |
             cypress-cache-${{ runner.os }}-
 
@@ -51,12 +51,6 @@ jobs:
         working-directory: backend
         run: npx cypress run 
 
-      - name: Upload de relatórios (opcional)
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: cypress-backend-results
-          path: backend/cypress/screenshots
 
   stress-tests:
     name: Run K6 Tests
