@@ -17,6 +17,7 @@
     "step_definitions": "cypress/e2e/step"
   },
   "dependencies": {
-    "faker-br": "^0.4.1"
+    "faker-br": "^0.4.1",
+    "cypress": "^14.1.0",
   }
 }
