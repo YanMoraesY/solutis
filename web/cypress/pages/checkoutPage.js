@@ -7,7 +7,12 @@ class CheckoutPage {
     }
 
     fillBillingFirstName() {
+        const firstName = faker.person.firstName();
+
         cy.get('#billing_first_name').clear().type(faker.person.firstName())
+        cy.get('#billing_first_name').clear().type(firstName);
+        cy.get('#billing_first_name').should('have.value', firstName);
+
     }
 
     fillBillingLastName() {
