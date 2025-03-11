@@ -44,7 +44,7 @@ jobs:
             cypress-cache-${{ runner.os }}-
 
       - name: Instalar dependências
-        working-directory: bakEnd
+        working-directory: backend
         run: npm install
 
       - name: Rodar testes do Cypress (API)
