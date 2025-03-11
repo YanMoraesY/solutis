@@ -48,7 +48,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: cypress-backend-results
-          path: bakEnd/cypress/screenshots
+          path: backEnd/cypress/screenshots
 
   stress-tests:
     name: Run K6 Tests
