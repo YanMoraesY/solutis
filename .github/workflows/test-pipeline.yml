@@ -41,14 +41,14 @@ jobs:
 
       - name: Rodar testes do Cypress (API)
         working-directory: backend
-        run: npx cypress run --headless --browser chrome
+        run: npx cypress run 
 
       - name: Upload de relatórios (opcional)
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: cypress-backend-results
-          path: backEnd/cypress/screenshots
+          path: backend/cypress/screenshots
 
   stress-tests:
     name: Run K6 Tests
