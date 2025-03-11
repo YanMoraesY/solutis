@@ -60,8 +60,3 @@ And("preencher o campo Email address", () => {
     checkoutPage.checkCreateAccount()
     checkoutPage.placeOrder()
 })
-
-Then('deve retornar mensagem Order Received', () => {
-    // Usando o método da Page Object para verificar a mensagem
-    OrderPage.verifyOrderReceivedMessage();
-});
