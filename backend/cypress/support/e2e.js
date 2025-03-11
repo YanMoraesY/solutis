@@ -15,6 +15,3 @@
 
 // Import commands.js using ES2015 syntax:
 import './commands'
-import 'cypress-plugin-api'
-// or
-require('cypress-plugin-api')
