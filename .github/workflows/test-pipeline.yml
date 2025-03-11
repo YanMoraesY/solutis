@@ -28,15 +28,23 @@ jobs:
           name: cypress-web-results
           path: web/cypress/screenshots
 
-  backend-tests:
+   backend-tests:
     name: Run Cypress (Backend)
     runs-on: ubuntu-latest
     steps:
       - name: Checkout código
         uses: actions/checkout@v4
 
+      - name: Configurar cache do Cypress
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/Cypress
+          key: cypress-cache-${{ runner.os }}-${{ hashFiles('bakEnd/package-lock.json') }}
+          restore-keys: |
+            cypress-cache-${{ runner.os }}-
+
       - name: Instalar dependências
-        working-directory: backend
+        working-directory: bakEnd
         run: npm install
 
       - name: Rodar testes do Cypress (API)
