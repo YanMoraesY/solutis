@@ -55,7 +55,7 @@ jobs:
 
       - name: Rodar testes de stress com K6
         working-directory: k6
-        run: k6 run index.js --vus 50 --duration 1m
+        run: k6 run index.js --vus 500 --duration 5m
 
   frontend-tests:
     name: Run Cypress (Frontend)
