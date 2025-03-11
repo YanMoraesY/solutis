@@ -28,7 +28,7 @@ jobs:
           name: cypress-web-results
           path: web/cypress/screenshots
 
-   backend-tests:
+  backend-tests:
     name: Run Cypress (Backend)
     runs-on: ubuntu-latest
     steps:
