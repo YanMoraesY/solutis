@@ -1,10 +1,6 @@
-import { faker } from '@faker-js/faker'
-
-
-import homePage from '../../../pages/homePage'
-import cartPage from '../../../pages/cartPage'
-import checkoutPage from '../../../pages/checkoutPage'
-
+import homePage from '../pages/homePage'
+import cartPage from '../pages/cartPage'
+import checkoutPage from '../pages/checkoutPage'
 
 Given("que o usuario tenha acessado o site", () => {
     homePage.visit()
