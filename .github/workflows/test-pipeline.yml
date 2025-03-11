@@ -45,7 +45,14 @@ jobs:
 
       - name: Instalar dependências
         working-directory: backend
-        run: npm install
+        run: npm ci
+
+      - name: Remover possíveis instalações corrompidas do Cypress
+        run: rm -rf ~/.cache/Cypress
+
+      - name: Garantir que o Cypress está instalado corretamente
+        working-directory: backend
+        run: npx cypress install --force
 
       - name: Rodar testes do Cypress (API)
         working-directory: backend
