@@ -17,6 +17,7 @@ When("preencher todos os campos da tela de cadastro", () => {
     checkoutPage.fillCity()
     checkoutPage.selectState()
     checkoutPage.fillZipCode()
+    checkoutPage.fillPhone()
     checkoutPage.fillEmail()
 })
 And("que o valor do produto seja o mesmo de 60 reais", () => {

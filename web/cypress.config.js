@@ -6,6 +6,8 @@ module.exports = defineConfig({
     testIsolation: false,
     failOnStatusCode: false,
     chromeWebSecurity: false,
+    chromeWebSecurity: false,
+    preserveOnNavigate: true,
 
     setupNodeEvents(on, config) {
       on('file:preprocessor', cucumber())
