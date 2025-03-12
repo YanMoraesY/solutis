@@ -4,7 +4,6 @@ const { defineConfig } = require("cypress");
 module.exports = defineConfig({
   e2e: {
     testIsolation: false,
-    clearAllSessionStorage: true,
     failOnStatusCode: false,
     chromeWebSecurity: false,
 

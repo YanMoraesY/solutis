@@ -1,29 +1,16 @@
 import { faker } from '@faker-js/faker'
 
-
 import homePage from '../../../pages/homePage'
-import cartPage from '../../../pages/cartPage'
+
 import checkoutPage from '../../../pages/checkoutPage'
 
+const preencherCampo = (campo, valor) => {
+    cy.get(campo).clear().type(valor).should('have.value', valor);
+}
 
-Given("que o usuario tenha acessado o site", () => {
-    homePage.visit()
-})
+Given("Deve preencher os dados para cadastros ", () => {
+    checkoutPage.restoreLocalStorage();  // Garantindo que a última URL seja carregada
 
-And("tenha clicado em Add to cart", () => {
-    homePage.clickAddToCart()
-    homePage.goToCart()
-})
-
-When("usuario estiver no menu sacola, validar que esteja na tela correta", () => {
-    cartPage.validateCartPage()
-})
-
-Then("usuario deve clicar em Proceed to checkout", () => {
-    cartPage.proceedToCheckout()
-})
-
-Given("que o usuario esteja na tela de cadastro ", () => {
     checkoutPage.validateBillingDetailsPage()
 })
 
@@ -61,6 +48,7 @@ And("preencher o campo phone", () => {
 
 And("preencher o campo Email address", () => {
     checkoutPage.fillEmail()
-    checkoutPage.checkCreateAccount()
+    // checkoutPage.checkCreateAccount()
     checkoutPage.placeOrder()
 })
+

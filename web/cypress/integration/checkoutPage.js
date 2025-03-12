@@ -1,14 +1,32 @@
 import homePage from '../pages/homePage'
 import cartPage from '../pages/cartPage'
 import checkoutPage from '../pages/checkoutPage'
+import CheckoutPage from './checkoutPage';
 
+
+beforeEach(() => {
+    // Restaurar o estado do carrinho a partir do localStorage antes de cada teste
+    cy.window().then((window) => {
+        const cartState = window.localStorage.getItem('cart');
+
+        if (cartState) {
+            window.localStorage.setItem('cart', cartState); // Restaurar o carrinho se necessário
+        } else {
+            console.log('Carrinho não encontrado no localStorage');
+        }
+    });
+
+    // Restaurar a URL da última página visitada (se houver)
+    CheckoutPage.restoreLocalStorage();
+})
 Given("que o usuario tenha acessado o site", () => {
-    homePage.visit()
+    homePage.visit('checkout')
 })
 
 And("tenha clicado em Add to cart", () => {
     homePage.clickAddToCart()
     homePage.goToCart()
+
 })
 
 When("usuario estiver no menu sacola, validar que esteja na tela correta", () => {

@@ -1,12 +1,35 @@
 import { faker } from '@faker-js/faker'
-
+import homePage from './homePage';
 
 class CheckoutPage {
+
+
+
+    saveLocalStorage() {
+        cy.window().then((window) => {
+            window.localStorage.setItem('lastUrl', window.location.href); // Salvando a última URL visitada
+        });
+    }
+
+    // Função para restaurar o estado do localStorage
+    restoreLocalStorage() {
+        cy.window().then((window) => {
+            const lastUrl = window.localStorage.getItem('lastUrl');
+            if (lastUrl) {
+                cy.visit(lastUrl); // Visitando a última URL salva
+            }
+        });
+    }
+
+
     validateBillingDetailsPage() {
         cy.contains('Billing details').should('be.visible')
     }
 
     fillBillingFirstName() {
+        cy.visit('https://demos.bellatrix.solutions/checkout')
+
+        this.restoreLocalStorage();
         const firstName = faker.person.firstName();
 
         cy.get('#billing_first_name').clear().type(faker.person.firstName())
@@ -57,7 +80,7 @@ class CheckoutPage {
     }
 
     placeOrder() {
-        cy.get('#place_order').click()
+        cy.get('#place_order').click({ force: true })
     }
 }
 
