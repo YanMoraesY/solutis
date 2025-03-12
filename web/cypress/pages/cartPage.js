@@ -2,9 +2,7 @@ class CartPage {
     validateCartPage() {
         cy.contains('Cart').should('be.visible')
     }
-
     proceedToCheckout() {
-        // Função para salvar o estado do carrinho
         function saveCartState() {
             cy.window().then((window) => {
                 const cartState = window.localStorage.getItem('cart');
@@ -15,10 +13,8 @@ class CartPage {
                 }
             });
         }
-
         cy.get('.checkout-button').click()
         cy.visit(`https://demos.bellatrix.solutions/checkout`)
-
     }
 
 }

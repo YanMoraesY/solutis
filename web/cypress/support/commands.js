@@ -4,8 +4,6 @@ Cypress.Commands.overwrite('visit', (originalFn, url, options) => {
     if (!options.localStorage) {
         options.localStorage = {}
     }
-
-    // Define que o Cypress não deve limpar o localStorage entre os testes
     options.localStorage.preserve = true
 
     return originalFn(url, options)

@@ -15,10 +15,8 @@ class HomePage {
         });
 
     }
-
     goToCart() {
         cy.get('.added_to_cart').click()
-
 
     }
 }
