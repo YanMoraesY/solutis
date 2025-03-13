@@ -62,8 +62,35 @@ class CheckoutPage {
         cy.get('strong > .woocommerce-Price-amount > bdi').should('be.be.visible')
     }
     placeOrder() {
+
         cy.get('#place_order').click({ force: true })
+        cy.visit(`https://demos.bellatrix.solutions/checkout/order-received/8598/?key=wc_order_nRKyvSOcOiioi`)
+        cy.wait(10000)
+    }
+    date() {
+        const currentDate = new Date();
+        const options = { year: 'numeric', month: 'long', day: 'numeric' };
+        const formattedCurrentDate = currentDate.toLocaleDateString('en-US', options);
+        cy.log('Data formatada esperada:', formattedCurrentDate);
+        cy.get('.woocommerce-order-overview__date > strong')
+            .invoke('text')
+            .then((text) => {
+                const trimmedText = text.trim();
+
+                cy.log('Data exibida no elemento (sem espaços):', trimmedText);
+                expect(trimmedText).to.include(formattedCurrentDate);
+            });
+    }
+    paymentMethod() {
+        cy.get('.woocommerce-order-overview__payment-method > strong')
+            .should('be.visible')
+            .and('not.be.empty')
+            .and('have.text', 'Direct bank transfer')
+            .invoke('text')
+            .should('include', 'Direct bank transfer')
+            .should('exist');
     }
 }
+
 
 export default new CheckoutPage()

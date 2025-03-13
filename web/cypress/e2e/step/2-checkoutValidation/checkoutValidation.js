@@ -23,4 +23,7 @@ When("preencher todos os campos da tela de cadastro", () => {
 And("que o valor do produto seja o mesmo de 60 reais", () => {
     checkoutPage.valueTotal()
     checkoutPage.placeOrder()
+    checkoutPage.date()
+    checkoutPage.paymentMethod()
+
 })

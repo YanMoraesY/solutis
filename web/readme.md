@@ -12,23 +12,10 @@ git clone https://github.com/YanMoraesY/solutis.git
 
 **Instale as dependências:**
 
-cd web
 npm install
 
 Abra o Cypress:
  npx cypress open
-
-/e2e
-    ├── /step
-    │   └── /checkout
-    │   |   |── checkout.js     # Passos definidos para o cenário de checkout com Cypress Cucumber
-    │   └── checkout.feature    # Cenários de teste em formato Gherkin (Cucumber)
-    ├── /integration
-    │   └── checkoutPage.js     # Testes da página de checkout (com interações com o POM)
-    ├── /pages
-    │   ├── cartPage.js         # Página de objetos (POM) para a página de carrinho
-    │   ├── checkoutPage.js     # Página de objetos (POM) para a página de checkout
-    │   └── homePage.js         # Página de objetos (POM) para a página inicial (Home)
 
 
 **Testes de Compra de Produto**

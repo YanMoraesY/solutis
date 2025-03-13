@@ -5,6 +5,10 @@ class HomePage {
     visit(path) {
         cy.visit(`https://demos.bellatrix.solutions/${path}`)
     }
+    search() {
+
+    }
+
 
     clickAddToCart() {
         cy.contains('50.00').should('be.visible')

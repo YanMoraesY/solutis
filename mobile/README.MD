@@ -41,9 +41,3 @@ O Appium será iniciado na porta 4723 (padrão).
 
 Estrutura do Projeto
 
-/mobile
-  ├── /tests/spects                 # Contém os testes automatizados
-  │   └── maps.e2e.js       # Teste de exemplo para o Apple Maps
-  ├── package.json               # Gerenciador de dependências e scripts
-  ├── wdio.conf.js               # Arquivo de configuração do WebDriverIO
-
