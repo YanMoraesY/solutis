@@ -9,15 +9,12 @@ Cypress.Commands.overwrite('visit', (originalFn, url, options) => {
     return originalFn(url, options)
 });
 
-
-// Salvar o estado do localStorage após o teste
 Cypress.Commands.add('saveLocalStorage', () => {
     cy.window().then((window) => {
         window.localStorage.setItem('lastUrl', window.location.href);
         window.localStorage.setItem('cart', JSON.stringify(window.localStorage.getItem('cart')));
     });
 });
-// Restaurar o localStorage antes de cada teste
 Cypress.Commands.add('restoreLocalStorage', () => {
     cy.window().then((window) => {
         const cartState = window.localStorage.getItem('cart');
@@ -32,21 +29,5 @@ Cypress.Commands.add('restoreLocalStorage', () => {
     });
 });
 
-Cypress.Commands.add('saveLocalStorageToFile', () => {
-    cy.window().then((window) => {
-        const localStorageState = window.localStorage.getItem('cart');
-        cy.writeFile('cypress/fixtures/cartState.json', { cart: localStorageState });
-    });
-});
-
-Cypress.Commands.add('restoreLocalStorageFromFile', () => {
-    cy.readFile('cypress/fixtures/cartState.json').then((localStorageState) => {
-        if (localStorageState && localStorageState.cart) {
-            cy.window().then((window) => {
-                window.localStorage.setItem('cart', localStorageState.cart);
-            });
-        }
-    });
-});
 
 

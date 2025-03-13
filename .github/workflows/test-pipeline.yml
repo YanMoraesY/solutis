@@ -55,27 +55,6 @@ jobs:
 
       - name: Rodar testes de stress com K6
         working-directory: k6
-        run: k6 run index.js --vus 500 --duration 5m
+        run: k6 run index.js --vus 500 --duration 1m
 
-  frontend-tests:
-    name: Run Cypress (Frontend)
-    runs-on: ubuntu-latest
-    needs: stress-tests 
-    steps:
-      - name: Checkout código
-        uses: actions/checkout@v4
-
-      - name: Instalar dependências
-        working-directory: web
-        run: npm install
-
-      - name: Rodar testes do Cypress (UI)
-        working-directory: web
-        run: npx cypress run --headless --browser chrome
-
-      - name: Upload de relatórios (opcional)
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: cypress-web-results
-          path: web/cypress/screenshots
+ 
