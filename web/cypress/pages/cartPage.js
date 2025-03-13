@@ -13,6 +13,7 @@ class CartPage {
                 }
             });
         }
+
         cy.get('.checkout-button').click()
         cy.visit(`https://demos.bellatrix.solutions/checkout`)
     }

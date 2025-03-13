@@ -66,6 +66,7 @@ class CheckoutPage {
         cy.get('#place_order').click({ force: true })
         cy.visit(`https://demos.bellatrix.solutions/checkout/order-received/8598/?key=wc_order_nRKyvSOcOiioi`)
         cy.wait(10000)
+
     }
     date() {
         const currentDate = new Date();

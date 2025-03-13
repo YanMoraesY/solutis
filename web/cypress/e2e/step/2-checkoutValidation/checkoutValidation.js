@@ -20,6 +20,13 @@ When("preencher todos os campos da tela de cadastro", () => {
     checkoutPage.fillPhone()
     checkoutPage.fillEmail()
 })
+beforeEach(() => {
+    cy.restoreLocalStorage();
+});
+
+afterEach(() => {
+    cy.saveLocalStorage();
+});
 And("que o valor do produto seja o mesmo de 60 reais", () => {
     checkoutPage.valueTotal()
     checkoutPage.placeOrder()
