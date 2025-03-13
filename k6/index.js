@@ -16,8 +16,6 @@ export function handleSummary(data) {
 export default function () {
     activitiesScenario();
 
-    // Cenário POST
-
     createActivityScenario();
 
     getActivityByIdScenario();
@@ -26,5 +24,4 @@ export default function () {
 
     deleteActivityScenario();
 }
-
-export { testConfig }; 
+export { testConfig };

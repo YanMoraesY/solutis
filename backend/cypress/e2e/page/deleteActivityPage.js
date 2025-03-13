@@ -3,7 +3,7 @@ class DeleteActivityPage {
     deleteActivity(id) {
         return cy.request({
             method: 'DELETE',
-            url: `https://fakerestapi.azurewebsites.net/api/v1/Activities/${id}`,
+            url: `${Cypress.env('BASE_URL')}/${id}`,
             headers: {
                 'accept': '*/*',
             },

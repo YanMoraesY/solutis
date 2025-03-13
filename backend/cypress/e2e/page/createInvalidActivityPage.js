@@ -9,7 +9,7 @@ class CreateInvalidActivityPage {
 
         return cy.request({
             method: 'POST',
-            url: 'https://fakerestapi.azurewebsites.net/api/v1/Activities',
+            url: `${Cypress.env('BASE_URL')}`,
             headers: {
                 'accept': 'text/plain; v=1.0',
                 'Content-Type': 'application/json; v=1.0',

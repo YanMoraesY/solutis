@@ -4,7 +4,7 @@ class GetActivityByIdInvalidPage {
     getActivityByIdInvalid(id) {
         return cy.request({
             method: 'GET',
-            url: `https://fakerestapi.azurewebsites.net/api/v1/Activities/${id}`,
+            url: `${Cypress.env('BASE_URL')}/${id}`,
             headers: {
                 'accept': 'text/plain; v=1.0',
             },

@@ -8,7 +8,7 @@ class UpdateActivityPage {
 
         return cy.request({
             method: 'PUT',
-            url: `https://fakerestapi.azurewebsites.net/api/v1/Activities/${activityId}`,
+            url: `${Cypress.env('BASE_URL')}/${activityId}`,
             headers: {
                 'accept': 'text/plain; v=1.0',
                 'Content-Type': 'application/json; v=1.0'
