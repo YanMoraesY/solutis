@@ -71,7 +71,7 @@ jobs:
 
       - name: Rodar testes do Cypress (UI)
         working-directory: web
-        run: npx cypress run
+        run: npx cypress run --browser chrome
 
       - name: Upload de relatórios (opcional)
         if: always()
