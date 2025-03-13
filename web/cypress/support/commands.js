@@ -32,3 +32,21 @@ Cypress.Commands.add('restoreLocalStorage', () => {
     });
 });
 
+Cypress.Commands.add('saveLocalStorageToFile', () => {
+    cy.window().then((window) => {
+        const localStorageState = window.localStorage.getItem('cart');
+        cy.writeFile('cypress/fixtures/cartState.json', { cart: localStorageState });
+    });
+});
+
+Cypress.Commands.add('restoreLocalStorageFromFile', () => {
+    cy.readFile('cypress/fixtures/cartState.json').then((localStorageState) => {
+        if (localStorageState && localStorageState.cart) {
+            cy.window().then((window) => {
+                window.localStorage.setItem('cart', localStorageState.cart);
+            });
+        }
+    });
+});
+
+
